@@ -20,6 +20,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Role</th>
+                                        <th scope="col">Active</th>
 
                                     </tr>
                                 </thead>
@@ -30,7 +31,8 @@
                                                 <td>{{$user->id}}</td>                                                
                                                 <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->role}}</td>
+                                                <td>{{$user->role->name}}</td>
+                                                <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
                                             </tr>
                                         @endforeach
                                     @endif

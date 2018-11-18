@@ -10,9 +10,9 @@
         <div class="col-md-10 ben-body">
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <h1>Edit User</h1>
+                    <h1>Create User</h1>
 
-                    {!! Form::model($user, ['method'=>'PATCH', 'action'=>['UsersController@update', $user->id], 'files'=>true]) !!}
+                    {!! Form::open(['method'=>'POST', 'action'=>'UsersController@store', 'files'=>true]) !!}
 
                         <div class="form-group">
                             {!! Form::label('name', 'Name:') !!}
@@ -31,7 +31,7 @@
 
                         <div class="form-group">
                             {!! Form::label('role_id', 'Role:') !!}
-                            {!! Form::select('role_id', $roles + $roles, null, ['class'=>'form-control']) !!}
+                            {!! Form::select('role_id', array_reverse($roles), null, ['class'=>'form-control']) !!}
                         </div>
 
                         <div class="form-group">
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::submit('Update User', ['class'=>'btn btn-primary col-sm-6 float-left']) !!}
+                            {!! Form::submit('Create User', ['class'=>'btn btn-primary col-sm-6 float-left']) !!}
                         </div>
 
                     {!! Form::close() !!}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -27,6 +28,9 @@ class UsersController extends Controller
     public function create()
     {
         //
+        $roles = Role::pluck('name', 'id')->all();
+
+        return view('users.createUser', compact('roles'));
     }
 
     /**
@@ -38,6 +42,25 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+        if(trim($request->password) == '') {
+            $input = $request->except('password');
+        } else {
+            $input = $request->all();
+            $input['password'] = bcrypt($request->password);
+        }
+
+        if($file = $request->file('photo_id')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+
+
+        User::create($input);
+
+
+        return redirect('/users/');
     }
 
     /**
@@ -60,6 +83,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
+        $user = User::findOrFail($id);
+        $roles = Role::pluck('name', 'id')->all();
+        return view('users.editUser', compact('user','roles'));
     }
 
     /**
@@ -72,6 +98,24 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::findOrFail($id);
+        
+        if($file = $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+
+        if(trim($request->password) == '') {
+            $input = $request->except('password');
+        } else {
+            $input = $request->all();
+            $input['password'] = bcrypt($request->password);
+        }
+
+        $user->update($input);
+        return redirect('/users');
     }
 
     /**

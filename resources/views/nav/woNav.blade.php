@@ -8,6 +8,9 @@
         <a class="nav-link" href="{{ asset('/listWorkOrder') }}">List Workorders</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ asset('/editUser') }}">Edit User</a>
+        <a class="nav-link" href="{{ asset('/users/create') }}">Create User</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ asset('/users') }}">Show Users</a>
     </li>
 </ul>
