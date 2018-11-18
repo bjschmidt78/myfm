@@ -15,10 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test/', function () {
+    return view('test');
+});
+
+Route::get('/newWorkOrder/', function () {
+    return view('workorder/newWorkorder');
+});
+
+Route::get('/listWorkOrder/', function () {
+    return view('workorder/listWorkorder');
+});
+
+Route::get('/editUser/', function () {
+    return view('users/editUser');
+});
+
+Route::get('/user/', function () {
+    return view('users/index');
+});
+
+Route::resource('users', 'UsersController');
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
