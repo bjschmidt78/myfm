@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -14,6 +15,8 @@ class CategoriesController extends Controller
     public function index()
     {
         //
+        $categories = Categories::all();
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -35,6 +38,10 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
+        $input = $request->all();
+        Categories::create($input);
+
+        return redirect('/categories/');
     }
 
     /**
@@ -57,6 +64,8 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
+        $category = Categories::findOrFail($id);
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -69,6 +78,9 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $category = Categories::findOrFail($id);
+        $category->update($request->all());
+        return redirect('/categories');
     }
 
     /**

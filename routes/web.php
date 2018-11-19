@@ -37,6 +37,8 @@ Route::get('/user/', function () {
 
 Route::resource('users', 'UsersController');
 
+Route::resource('categories', 'CategoriesController');
+
 
 
 

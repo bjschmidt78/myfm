@@ -49,6 +49,12 @@
                         </div>
 
                     {!! Form::close() !!}
+
+                    {!! Form::open(['method' => 'DELETE', 'action' => ['UsersController@destroy', $user->id]]) !!}
+                        <div class="form-group">
+                            {!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-6 float-right']) !!}
+                        </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
