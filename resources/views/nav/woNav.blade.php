@@ -18,6 +18,12 @@
 
 	<h5 class="text-center">Work Orders</h5>
     <li class="nav-item">
+        <a class="nav-link" href="{{ asset('/workorder') }}">Workorder Index</a>
+    </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{ asset('/workorder/create') }}">Create Workorder</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{ asset('/listWorkOrder') }}">List Workorders</a>
     </li>
     <li class="nav-item">
