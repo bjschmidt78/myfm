@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Priority;
 use App\Workorder;
+use App\Categories;
 use Illuminate\Http\Request;
 
 class WorkorderController extends Controller
@@ -65,7 +68,10 @@ class WorkorderController extends Controller
     {
         //
         $workorder = Workorder::findOrFail($id);
-        return view('workorder.edit', compact('workorder'));
+        $categories = Categories::pluck('name', 'id')->all();
+        $priority = Priority::pluck('name', 'id')->all();
+        $user = User::pluck('name', 'id')->all();
+        return view('workorder.edit', compact('workorder', 'categories', 'priority', 'user'));
     }
 
     /**
@@ -81,6 +87,7 @@ class WorkorderController extends Controller
         $workorder = Workorder::findOrFail($id);
         $input = $request->all();
         $workorder->update($input);
+        //return $request->all();    
         return redirect('/workorder');
     }
 

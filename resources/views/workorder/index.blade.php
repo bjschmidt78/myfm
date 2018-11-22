@@ -19,6 +19,10 @@
                                         <th scope="col">Id</th>
                                         <th scope="col">Title</th>
                                         <th scope="col">Discription</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Priority</th>
+                                        <th scope="col">Due Date</th>
+                                        <th scope="col">Assigned to:</th>
 
                                     </tr>
                                 </thead>
@@ -29,6 +33,11 @@
                                                 <td>{{$workorder->id}}</td>                                                
                                                 <td><a href="{{route('workorder.edit', $workorder->id)}}">{{$workorder->title}}</a></td>
                                                 <td>{{$workorder->description}}</td>
+                                                <td>{{$workorder->category->name}}</td>
+                                                <td>{{$workorder->priority->name}}</td>
+                                                <td>{{$workorder->due ? $workorder->due->diffForHumans() : 'Not Set'}}</td>
+                                                <td>{{$workorder->user_id ? $workorder->user->name : 'Not Assigned'}}</td>
+
                                             </tr>
                                         @endforeach
                                     @endif
