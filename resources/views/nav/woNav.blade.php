@@ -29,6 +29,9 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ asset('/newWorkOrder') }}">New Workorder</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ asset('/test') }}">test</a>
+    </li>
 
 
 </ul>

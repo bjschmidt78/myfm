@@ -30,6 +30,16 @@
                         </div>
 
                         <div class="form-group">
+                            {!! Form::label('due', 'Due Date:') !!}
+                            {!! Form::date('due', null, ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('user_id', 'Assigned To:') !!}
+                            {!! Form::select('user_id', [''=>'Choose Options'] + $user, null, ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
                             {!! Form::label('description', 'Description:') !!}
                             {!! Form::textarea('description', null, ['class'=>'form-control', 'rows' => 4]) !!}
                         </div>
@@ -40,11 +50,6 @@
 
                     {!! Form::close() !!}
 
-                    {!! Form::open(['method' => 'DELETE', 'action' => ['WorkorderController@destroy', $workorder->id]]) !!}
-                        <div class="form-group">
-                            {!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-6 float-right']) !!}
-                        </div>
-                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

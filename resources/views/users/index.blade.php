@@ -31,7 +31,7 @@
                                                 <td>{{$user->id}}</td>                                                
                                                 <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->role->name}}</td>
+                                                <td>{{$user->role ? $user->role->name : 'Not Assigned'}}</td>
                                                 <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
                                             </tr>
                                         @endforeach

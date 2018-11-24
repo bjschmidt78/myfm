@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Time;
 use App\Priority;
 use App\Workorder;
 use App\Categories;
@@ -71,7 +72,8 @@ class WorkorderController extends Controller
         $categories = Categories::pluck('name', 'id')->all();
         $priority = Priority::pluck('name', 'id')->all();
         $user = User::pluck('name', 'id')->all();
-        return view('workorder.edit', compact('workorder', 'categories', 'priority', 'user'));
+        $time = Time::pluck('estimated_time', 'actual_time', 'notes', 'id')->all();
+        return view('workorder.edit', compact('workorder', 'categories', 'priority', 'user', 'time'));
     }
 
     /**
@@ -87,7 +89,7 @@ class WorkorderController extends Controller
         $workorder = Workorder::findOrFail($id);
         $input = $request->all();
         $workorder->update($input);
-        //return $request->all();    
+        // return $request->all();    
         return redirect('/workorder');
     }
 
@@ -95,7 +97,7 @@ class WorkorderController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responsem 
      */
     public function destroy($id)
     {

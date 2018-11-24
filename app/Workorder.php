@@ -36,4 +36,8 @@ class Workorder extends Model
         public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public function time(){
+        return $this->belongsTo('App\Time');
+    }
 }

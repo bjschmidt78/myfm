@@ -20,6 +20,23 @@ class CreatePrioritiesTable extends Migration
             $table->integer('time_reminder')->default(0);
             $table->timestamps();
         });
+        
+
+        DB::table('priorities')->insert([
+            'name' => 'None',        
+        ]);
+
+        DB::table('priorities')->insert([
+            'name' => 'Low',        
+        ]);
+
+        DB::table('priorities')->insert([
+            'name' => 'Medium',        
+        ]);
+
+        DB::table('priorities')->insert([
+            'name' => 'High',        
+        ]);
     }
 
     /**

@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-10 ben-body">
             <div class="row justify-content-center">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <h1>Workorders</h1>
                     
 
@@ -23,6 +23,7 @@
                                         <th scope="col">Priority</th>
                                         <th scope="col">Due Date</th>
                                         <th scope="col">Assigned to:</th>
+                                        <th scope="col">Estimated Time:</th>
 
                                     </tr>
                                 </thead>
@@ -32,11 +33,12 @@
                                             <tr>
                                                 <td>{{$workorder->id}}</td>                                                
                                                 <td><a href="{{route('workorder.edit', $workorder->id)}}">{{$workorder->title}}</a></td>
-                                                <td>{{$workorder->description}}</td>
-                                                <td>{{$workorder->category->name}}</td>
-                                                <td>{{$workorder->priority->name}}</td>
-                                                <td>{{$workorder->due ? $workorder->due->diffForHumans() : 'Not Set'}}</td>
+                                                <td>{{str_limit($workorder->description, 150)}}</td>
+                                                <td>{{$workorder->category ? $workorder->category->name : 'Not Set'}}</td>
+                                                <td>{{$workorder->priority ? $workorder->priority->name : 'Not Set'}}</td>
+                                                <td>{{$workorder->due ? $workorder->due->format('m/d/Y') : 'Not Set'}}</td>
                                                 <td>{{$workorder->user_id ? $workorder->user->name : 'Not Assigned'}}</td>
+                                                <td>time</td>
 
                                             </tr>
                                         @endforeach
