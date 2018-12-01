@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Time;
-use App\Priority;
-use App\Workorder;
-use App\Categories;
-use App\Est_time;
 use Illuminate\Http\Request;
 
-class WorkorderController extends Controller
+class TestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +14,6 @@ class WorkorderController extends Controller
     public function index()
     {
         //
-        $workorders = Workorder::all();
-        return view('workorder.index', compact('workorders'));
     }
 
     /**
@@ -32,7 +24,7 @@ class WorkorderController extends Controller
     public function create()
     {
         //
-        return view('workorder.create', compact('roles'));
+
     }
 
     /**
@@ -44,9 +36,8 @@ class WorkorderController extends Controller
     public function store(Request $request)
     {
         //
-        $input = $request->all();
-        Workorder::create($input);
-        return redirect('/workorder/');
+        //return dd(session()->all());
+        return dd($request->all());
     }
 
     /**
@@ -69,13 +60,6 @@ class WorkorderController extends Controller
     public function edit($id)
     {
         //
-        $workorder = Workorder::findOrFail($id);
-        $categories = Categories::pluck('name', 'id')->all();
-        $priority = Priority::pluck('name', 'id')->all();
-        $user = User::pluck('name', 'id')->all();
-        $time = Time::pluck('estimated_time', 'actual_time', 'notes', 'id')->all();
-        $est_time = Est_time::orderby('value')->pluck('name', 'value', 'id')->all();
-        return view('workorder.edit', compact('workorder', 'categories', 'priority', 'user', 'time', 'est_time'));
     }
 
     /**
@@ -88,24 +72,16 @@ class WorkorderController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $workorder = Workorder::findOrFail($id);
-        $input = $request->all();
-        $workorder->update($input);
-        // return $request->all();    
-        return redirect('/workorder');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Responsem 
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        $workorder = Workorder::findOrFail($id);
-        $workorder->delete();
-        return redirect('/workorder');
     }
 }

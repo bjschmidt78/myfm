@@ -29,10 +29,19 @@ class CreateWorkordersTable extends Migration
             $table->integer('photo_id')->index()->unsigned()->nullable();
             $table->integer('asset_id')->index()->unsigned()->nullable();
             $table->integer('user_id')->index()->unsigned()->nullable();
+            $table->integer('est_time_id')->index()->unsigned()->nullable();
             $table->timestamp('due')->nullable();
 
             // ->unique()->index()->default(3)->nullable();
         });
+
+        DB::table('workorders')->insert([
+            'title' => 'My first workorder',
+            'description' => 'More information about my first work order.  This is where a detailed description would go.',
+
+            "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
+            "updated_at" => \Carbon\Carbon::now()  # \Datetime()
+        ]);
     }
 
     /**

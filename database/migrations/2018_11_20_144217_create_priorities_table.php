@@ -23,19 +23,10 @@ class CreatePrioritiesTable extends Migration
         
 
         DB::table('priorities')->insert([
-            'name' => 'None',        
-        ]);
-
-        DB::table('priorities')->insert([
-            'name' => 'Low',        
-        ]);
-
-        DB::table('priorities')->insert([
-            'name' => 'Medium',        
-        ]);
-
-        DB::table('priorities')->insert([
-            'name' => 'High',        
+            ['name' => 'None',      'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'Low',       'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'Medium',    'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'High',      'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()]               
         ]);
     }
 

@@ -20,15 +20,9 @@ class CreateRolesTable extends Migration
         });
 
         DB::table('roles')->insert([
-            'name' => 'Administrator',
-        ]);
-
-        DB::table('roles')->insert([
-            'name' => 'Super User',
-        ]);
-        
-        DB::table('roles')->insert([
-            'name' => 'User',        
+            ['name' => 'Administrator', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'Super User',    'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'User',          'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()]
         ]);
     }
     /**

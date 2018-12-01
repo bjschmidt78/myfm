@@ -20,22 +20,12 @@ class CreateCategoriesTable extends Migration
         });
 
         DB::table('categories')->insert([
-            'name' => 'HVAC',        
+            ['name' => 'None',          'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'HVAC',          'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'Electrical',    'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'Plumbing',      'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'Furniture',     'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()]
         ]);
-        
-        DB::table('categories')->insert([
-            'name' => 'Electrical',        
-        ]);
-        
-        DB::table('categories')->insert([
-            'name' => 'Plumbing',        
-        ]);
-        
-        DB::table('categories')->insert([
-            'name' => 'Furniture',        
-        ]);
-
-
     }
 
     /**

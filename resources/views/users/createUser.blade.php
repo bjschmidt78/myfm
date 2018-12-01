@@ -12,43 +12,52 @@
                 <div class="col-md-10">
                     <h1>Create User</h1>
 
-                    {!! Form::open(['method'=>'POST', 'action'=>'UsersController@store', 'files'=>true]) !!}
-
+                    <form method="post" action="{{ route('users.store') }}">
+    
                         <div class="form-group">
-                            {!! Form::label('name', 'Name:') !!}
-                            {!! Form::text('name', null, ['class'=>'form-control']) !!}
+                            @csrf
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" name="name"/>
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('email', 'Email:') !!}
-                            @if($errors->has('email'))
-                                <div class="alert alert-danger">
-                                    Must have email
-                                </div>
+                            <label for="email">Email:</label>
+                                @if($errors->has('email'))
+                                    <div class="alert alert-danger">
+                                        Must have email
+                                    </div>
+                                @endif
+                            <input type="email" class="form-control" name="email"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role_id">Role:</label>
+                            @if($roles)
+                                <select name="role_id" id="role_id" class="form-control">
+                                    @foreach($roles->reverse() as $role)
+                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                    @endforeach
+                                </select>
                             @endif
-                            {!! Form::email('email', null, ['class'=>'form-control']) !!}
+                        </div>
+
+                       <div class="form-group">
+                            <label for="is_active">Is Active:</label>                            
+                            <select name="is_active" id="is_active" class="form-control">
+                                <option value="1">Active</option>
+                                <option value="0">Not Active</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('role_id', 'Role:') !!}
-                            {!! Form::select('role_id', array_reverse($roles), null, ['class'=>'form-control']) !!}
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" name="password">
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('is_active', 'Is Active:') !!}
-                            {!! Form::select('is_active', array(1=>'Active', 0=>'Not Active'), null, ['class'=>'form-control']) !!}
+                            <button class="btn btn-primary col-sm-6 float-left my-3">Create User</button>
                         </div>
-
-                        <div class="form-group">
-                            {!! Form::label('password', 'Password:') !!}
-                            {!! Form::password('password', ['class'=>'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::submit('Create User', ['class'=>'btn btn-primary col-sm-6 float-left my-3']) !!}
-                        </div>
-
-                    {!! Form::close() !!}
+                    </form>
                 </div>
             </div>
         </div>

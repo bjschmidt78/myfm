@@ -40,4 +40,8 @@ class Workorder extends Model
     public function time(){
         return $this->belongsTo('App\Time');
     }
+
+    public function est_time(){
+        return $this->belongsTo('App\Est_time');
+    }
 }

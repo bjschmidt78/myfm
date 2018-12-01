@@ -29,7 +29,11 @@ class CreateUsersTable extends Migration
         DB::table('users')->insert([
             'name' => 'Benjamin Schmidt',
             'email' => 'big_ben88@hotmail.com',
-            'password' => bcrypt('asdfghjkl')        
+            'password' => bcrypt('asdfghjkl'),
+
+            
+            "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
+            "updated_at" => \Carbon\Carbon::now()  # \Datetime() 
         ]);
     }
 

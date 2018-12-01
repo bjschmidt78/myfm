@@ -30,6 +30,11 @@
                         </div>
 
                         <div class="form-group">
+                            {!! Form::label('est_time_id', 'Estimated Time:') !!}
+                            {!! Form::select('est_time_id', [''=>'Choose Time'] + $est_time, null, ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
                             {!! Form::label('due', 'Due Date:') !!}
                             {!! Form::date('due', null, ['class'=>'form-control']) !!}
                         </div>
@@ -38,6 +43,10 @@
                             {!! Form::label('user_id', 'Assigned To:') !!}
                             {!! Form::select('user_id', [''=>'Choose Options'] + $user, null, ['class'=>'form-control']) !!}
                         </div>
+
+
+
+
 
                         <div class="form-group">
                             {!! Form::label('description', 'Description:') !!}

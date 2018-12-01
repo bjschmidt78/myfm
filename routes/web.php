@@ -19,6 +19,14 @@ Route::get('/test/', function () {
     return view('test');
 });
 
+Route::get('/test2/', function () {
+    return view('test2');
+});
+
+Route::get('/test3/', function () {
+    return view('test3');
+});
+
 Route::get('/newWorkOrder/', function () {
     return view('workorder/newWorkorder');
 });
@@ -40,6 +48,10 @@ Route::resource('users', 'UsersController');
 Route::resource('categories', 'CategoriesController');
 
 Route::resource('workorder', 'WorkorderController');
+
+Route::resource('test', 'TestController');
+
+
 
 
 
