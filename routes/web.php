@@ -51,6 +51,8 @@ Route::resource('workorder', 'WorkorderController');
 
 Route::resource('test', 'TestController');
 
+Route::resource('test3', 'TaskController');
+
 
 
 

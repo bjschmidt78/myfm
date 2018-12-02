@@ -15,10 +15,8 @@ class CreateTimesTable extends Migration
     {
         Schema::create('times', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('workorder_id')->index();
             $table->integer('estimated_time')->default(0);
             $table->integer('actual_time')->default(0);
-            $table->text('notes');
 
             $table->timestamps();
         });

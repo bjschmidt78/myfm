@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected function role(){
         return $this->belongsTo('App\Role');
     }
+
+    protected function tasks(){
+        return $this->hasMany('App\Tasks');
+    }
+
 }

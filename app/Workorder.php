@@ -15,7 +15,9 @@ class Workorder extends Model
         'photo_id',
         'asset_id',
         'user_id',
-        'due'
+        'due',
+        'est_time',
+        'act_time'
 
     ];
 
@@ -34,14 +36,10 @@ class Workorder extends Model
     }
 
         public function user(){
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\User');
     }
 
-    public function time(){
-        return $this->belongsTo('App\Time');
-    }
-
-    public function est_time(){
-        return $this->belongsTo('App\Est_time');
+    public function task(){
+        return $this->hasMany('App\Tasks');
     }
 }

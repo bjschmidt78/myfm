@@ -28,8 +28,9 @@ class CreateWorkordersTable extends Migration
             $table->integer('category_id')->index()->unsigned()->nullable();
             $table->integer('photo_id')->index()->unsigned()->nullable();
             $table->integer('asset_id')->index()->unsigned()->nullable();
-            $table->integer('user_id')->index()->unsigned()->nullable();
-            $table->integer('est_time_id')->index()->unsigned()->nullable();
+            $table->integer('users_id')->index()->unsigned()->nullable();
+            $table->integer('est_time')->default(0)->unsigned();
+            $table->integer('act_time')->default(0)->unsigned();
             $table->timestamp('due')->nullable();
 
             // ->unique()->index()->default(3)->nullable();

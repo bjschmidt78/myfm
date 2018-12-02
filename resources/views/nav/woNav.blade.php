@@ -29,11 +29,16 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ asset('/newWorkOrder') }}">New Workorder</a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ asset('/workorder/1/edit') }}">edit workorder 1</a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="{{ asset('/test') }}">test</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ asset('/test2') }}">test2</a>
+        <a class="nav-link" href="{{ asset('/test3') }}">test3 List tasks</a>
     </li>
 
 

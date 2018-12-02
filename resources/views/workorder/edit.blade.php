@@ -30,23 +30,28 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('est_time_id', 'Estimated Time:') !!}
-                            {!! Form::select('est_time_id', [''=>'Choose Time'] + $est_time, null, ['class'=>'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
                             {!! Form::label('due', 'Due Date:') !!}
                             {!! Form::date('due', null, ['class'=>'form-control']) !!}
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label('user_id', 'Assigned To:') !!}
-                            {!! Form::select('user_id', [''=>'Choose Options'] + $user, null, ['class'=>'form-control']) !!}
+                        <div class="row justify-content-center">
+                            
+                            <div class="form-group col-md-6">
+                                {!! Form::label('est_time', 'Estimated Time:') !!}
+                                {!! Form::select('est_time', ['0'=>'Choose Options'] + $est_time, null, ['class'=>'form-control']) !!}
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                {!! Form::label('act_time', 'Actual Time:') !!}
+                                {!! Form::select('act_time', ['0'=>'Choose Options'] + $est_time, null, ['class'=>'form-control']) !!}
+                            </div>
+
                         </div>
 
-
-
-
+                        <div class="form-group">
+                            {!! Form::label('users_id', 'Assigned To:') !!}
+                            {!! Form::select('users_id', [''=>'Choose Options'] + $user, null, ['class'=>'form-control']) !!}
+                        </div>
 
                         <div class="form-group">
                             {!! Form::label('description', 'Description:') !!}

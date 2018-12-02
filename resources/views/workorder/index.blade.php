@@ -24,7 +24,7 @@
                                         <th scope="col">Due Date</th>
                                         <th scope="col">Assigned to:</th>
                                         <th scope="col">Estimated Time:</th>
-
+                                        <th scope="col">Total Time:</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,7 +38,10 @@
                                                 <td>{{$workorder->priority ? $workorder->priority->name : 'Not Set'}}</td>
                                                 <td>{{$workorder->due ? $workorder->due->format('m/d/Y') : 'Not Set'}}</td>
                                                 <td>{{$workorder->user_id ? $workorder->user->name : 'Not Assigned'}}</td>
-                                                <td>time</td>
+                                                <td>{{$workorder->est_time < 60 ? $workorder->est_time . ' minuets' : floor($workorder->est_time / 60) . ':' . $workorder->est_time % 60 }}</td>
+                                                <td>{{$workorder->act_time < 60 ? $workorder->act_time . ' minuets' : floor($workorder->act_time / 60) . ':' . $workorder->act_time % 60 }}</td>
+
+                                                
 
                                             </tr>
                                         @endforeach
