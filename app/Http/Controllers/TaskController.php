@@ -40,6 +40,11 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
+        $input = $request->all();
+        Tasks::create($input);
+
+
+        return redirect('/test3/');
     }
 
     /**

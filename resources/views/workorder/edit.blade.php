@@ -64,6 +64,82 @@
 
                     {!! Form::close() !!}
 
+                    <br>
+                    <br>
+                    @if($tasks)
+                        <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Work Order Id</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Estimated Time</th>
+                                <th scope="col">Actual Time</th>
+                                <th scope="col">Assigned To:</th>
+                             
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($tasks as $task)
+                                <tr>
+                                    <td>{{$task->id}}</td>
+                                    <td>{{$task->workorders_id}}</td>
+                                    <td>{{$task->description}}</td>
+                                    <td>{{$task->est_time}}</td>
+                                    <td>{{$task->actual_time}}</td>
+                                    <td>{{$task->user->name}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table><!-- / -->
+                    @endif
+                    <br>
+                    <br>
+
+
+                    <form method="post" action="{{ route('test3.store') }}">
+                        <div class="form-group">
+                            @csrf
+                            <label for="name">Task Description:</label>
+                            <input type="text" class="form-control" name="description"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="user_id">Assigned Worker:</label>
+                            @if($users)
+                                <select name="user_id" id="user_id" class="form-control">
+                                    @foreach($users as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="workorders_id" value='{{$workorder->id}}'/>
+                        </div>
+                        <div class="form-group">
+                            <label for="est_time">Estimated Time:</label>
+                            <select name="est_time" id="est_time" class="form-control">
+                                @for ($h = 0; $h <= 8; $h++)
+                                    @for ($m = 0; $m < 60; $m += 15)
+                                        <option value="{{($h*'60')+$m}}">{{($h=='0' ? '00' : ('0' . $h)).' : ' . ($m=='0' ? '00' : $m)}}</option>    
+                                    @endfor
+                                @endfor                                       
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="actual_time">Actual Time:</label>
+                            <select name="actual_time" id="actual_time" class="form-control">
+                                @for ($h = 0; $h <= 8; $h++)
+                                    @for ($m = 0; $m < 60; $m += 15)
+                                        <option value="{{($h*'60')+$m}}">{{($h=='0' ? '00' : ('0' . $h)).' : ' . ($m=='0' ? '00' : $m)}}</option>    
+                                    @endfor
+                                @endfor                                       
+                            </select>
+                        </div>
+                          
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+
                 </div>
             </div>
         </div>

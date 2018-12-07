@@ -14,7 +14,7 @@ class Workorder extends Model
         'category_id',
         'photo_id',
         'asset_id',
-        'user_id',
+        'users_id',
         'due',
         'est_time',
         'act_time'
@@ -28,16 +28,21 @@ class Workorder extends Model
     ];
 
     public function category(){
-    	return $this->belongsTo('App\Categories');
+        return $this->belongsTo('App\Categories');
+    }
+
+    public function status(){
+        return $this->belongsTo('App\Status');
     }
 
     public function priority(){
         return $this->belongsTo('App\Priority');
     }
 
-        public function user(){
-        return $this->hasOne('App\User');
+    public function users(){
+        return $this->belongsTo('App\User');
     }
+ 
 
     public function task(){
         return $this->hasMany('App\Tasks');

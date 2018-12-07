@@ -43,6 +43,10 @@ Route::get('/user/', function () {
     return view('users/index');
 });
 
+Route::get('/wo2/', function () {
+    return view('wo2/index');
+});
+
 Route::resource('users', 'UsersController');
 
 Route::resource('categories', 'CategoriesController');
@@ -52,6 +56,10 @@ Route::resource('workorder', 'WorkorderController');
 Route::resource('test', 'TestController');
 
 Route::resource('test3', 'TaskController');
+
+Route::resource('workorder2', 'WorkOrderController2');
+
+Route::resource('workorderlist', 'WorkOrderListController');
 
 
 

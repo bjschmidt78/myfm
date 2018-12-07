@@ -18,8 +18,8 @@ class CreateTasksTable extends Migration
             $table->integer('workorders_id')->index();
             $table->integer('user_id')->index()->nullable();
             $table->text('description');
-            $table->integer('est_time')->unsigned();
-            $table->integer('actual_time')->unsigned();
+            $table->integer('est_time')->unsigned()->nullable();
+            $table->integer('actual_time')->unsigned()->nullable();
             // $table->integer('status');
             $table->timestamps();
         });

@@ -40,6 +40,13 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ asset('/test3') }}">test3 List tasks</a>
     </li>
-
+    
+    <h5 class="text-center">Work Order 2</h5>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ asset('/workorderlist') }}">Work Order List</a>
+    </li>
+    <br>
+    <br>
+    <h5>end</h5>
 
 </ul>

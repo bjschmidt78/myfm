@@ -9,7 +9,7 @@ class Tasks extends Model
     //
     protected $fillable = [
     	'workorders_id',
-    	'users_id',
+    	'user_id',
     	'description',
     	'est_time',
         'actual_time',

@@ -37,7 +37,7 @@
                                                 <td>{{$workorder->category ? $workorder->category->name : 'Not Set'}}</td>
                                                 <td>{{$workorder->priority ? $workorder->priority->name : 'Not Set'}}</td>
                                                 <td>{{$workorder->due ? $workorder->due->format('m/d/Y') : 'Not Set'}}</td>
-                                                <td>{{$workorder->user_id ? $workorder->user->name : 'Not Assigned'}}</td>
+                                                <td>{{$workorder->users ? $workorder->users->name : 'Not Set'}}</td>
                                                 <td>{{$workorder->est_time < 60 ? $workorder->est_time . ' minuets' : floor($workorder->est_time / 60) . ':' . $workorder->est_time % 60 }}</td>
                                                 <td>{{$workorder->act_time < 60 ? $workorder->act_time . ' minuets' : floor($workorder->act_time / 60) . ':' . $workorder->act_time % 60 }}</td>
 

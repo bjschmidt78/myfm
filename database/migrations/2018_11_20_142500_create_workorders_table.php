@@ -26,6 +26,7 @@ class CreateWorkordersTable extends Migration
             //Work Order Admin assigned information
             $table->integer('priority_id')->index()->default(1)->unsigned()->nullable();            
             $table->integer('category_id')->index()->unsigned()->nullable();
+            $table->integer('status_id')->index()->unsigned()->nullable()->default(1);
             $table->integer('photo_id')->index()->unsigned()->nullable();
             $table->integer('asset_id')->index()->unsigned()->nullable();
             $table->integer('users_id')->index()->unsigned()->nullable();
