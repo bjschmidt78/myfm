@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Time;
 use App\Tasks;
+use App\Status;
 use App\Priority;
 use App\Workorder;
 use App\Categories;
@@ -33,8 +34,8 @@ class WorkorderController extends Controller
      */
     public function create()
     {
-        //
-        return view('workorder.create', compact('roles'));
+        $categories = Categories::pluck('name', 'id')->all();
+        return view('workorder.create', compact('categories'));
     }
 
     /**
@@ -59,8 +60,12 @@ class WorkorderController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $users = User::all();
+        $priority = Priority::pluck('name', 'id')->all();
+        $status = Status::pluck('name', 'id')->all();
+        $tasks = Tasks::where('workorders_id', $id)->get();
+        $workorder = Workorder::findOrFail($id);
+        return view('workorder.show', compact('workorder', 'users', 'tasks', 'status', 'priority'));    }
 
     /**
      * Show the form for editing the specified resource.
@@ -74,11 +79,12 @@ class WorkorderController extends Controller
         $workorder = Workorder::findOrFail($id);
         $categories = Categories::pluck('name', 'id')->all();
         $priority = Priority::pluck('name', 'id')->all();
+        $status = Status::pluck('name', 'id')->all();
         $tasks = Tasks::where('workorders_id', $id)->get();
         $users = User::all();
         $user = User::pluck('name', 'id')->all();
         $est_time = Est_time::pluck('name', 'value', 'id')->all();
-        return view('workorder.edit', compact('workorder', 'categories', 'priority', 'user', 'est_time', 'users', 'tasks'));
+        return view('workorder.edit', compact('workorder', 'categories', 'priority', 'user', 'est_time', 'users', 'tasks', 'status'));
     }
 
     /**
@@ -90,12 +96,10 @@ class WorkorderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $workorder = Workorder::findOrFail($id);
         $input = $request->all();
-        $workorder->update($input);
-        // return $request->all();    
-        return redirect('/workorder');
+        $workorder->update($input);   
+        return redirect('/workorder/'.$id);
     }
 
     /**

@@ -20,9 +20,15 @@
                         </div>
 
                         <div class="form-group">
+                            {!! Form::label('category_id', 'Category:') !!}
+                            {!! Form::select('category_id', [''=>'Choose Options'] + $categories, null, ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
                             {!! Form::label('description', 'Description:') !!}
                             {!! Form::textarea('description', null, ['class'=>'form-control']) !!}
                         </div>
+
 
                         <div class="form-group">
                             {!! Form::submit('Create Work Order', ['class'=>'btn btn-primary col-sm-6 float-left my-3']) !!}

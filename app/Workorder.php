@@ -12,6 +12,7 @@ class Workorder extends Model
         'description',
         'priority_id',
         'category_id',
+        'status_id',
         'photo_id',
         'asset_id',
         'users_id',

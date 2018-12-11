@@ -92,5 +92,8 @@ class WorkOrderController2 extends Controller
     public function destroy($id)
     {
         //
+        $task = Tasks::findOrFail($id);
+        $task->delete();
+        return redirect()->back();
     }
 }

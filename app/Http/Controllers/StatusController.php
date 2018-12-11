@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Tasks;
+use App\Status;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
-        $tasks = Tasks::all();
-        $users = User::all();
-        return view('test3', compact('tasks', 'users'));
+        $statuses = Status::all();
+        return view('status.index', compact('statuses'));
     }
 
     /**
@@ -39,13 +36,10 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $input = $request->all();
-        Tasks::create($input);
+        Status::create($input);
 
-
-        return redirect()->back();
-    }
+        return redirect('/statuses/');    }
 
     /**
      * Display the specified resource.
@@ -66,8 +60,8 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $status = Status::findOrFail($id);
+        return view('status.edit', compact('status'));    }
 
     /**
      * Update the specified resource in storage.
@@ -78,8 +72,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $status = Status::findOrFail($id);
+        $status->update($request->all());
+        return redirect('/statuses');    }
 
     /**
      * Remove the specified resource from storage.

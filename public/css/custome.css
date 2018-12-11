@@ -1,11 +1,23 @@
 .ben-nav {
-	background: #84CEEB;
+	background: #AC987B;
 }
 
 .navbar-laravel {
-	background: #8860CF;
+	background: #AC987B;
 }
 
 .ben-body {
-	background: #C1C8E4;
+	background: #D9D9D9;
+}
+
+a:link {
+	color: #663000;
+}
+
+a:visited {
+	color: #663000;
+}
+
+a:hover {
+	color: #663000;
 }
