@@ -33,6 +33,11 @@ Route::resource('categories', 'CategoriesController');
 
 Route::resource('statuses', 'StatusController');
 
+Route::resource('tasks', 'TaskController');
+
+// Route::get('workorder/{workorder}/complete', 'WorkorderController@complete')->name('workorder.complete');
+
+Route::resource('completeworkorder', 'CompleteWorkorderController');
 Route::resource('workorder', 'WorkorderController');
 
 Route::resource('workorderlist', 'WorkOrderListController');

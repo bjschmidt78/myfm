@@ -14,16 +14,16 @@
                 <div class="col-md-11">
                     <h1>Workorders</h1>
                     
-
                     <table class="table">
                         <thead>
                             <tr>
-                                <th style="width: 20%">Title</th>
-                                <th style="width: 40%">Description</th>
+                                <th style="width: 50%">Title</th>
+                                {{-- <th style="width: 40%">Description</th> --}}
+                                <th style="width: 20%">Status</th>
                                 <th style="width: 10%">Category</th>
-                                <th style="width: 10%">Status</th>
                                 <th style="width: 10%">Assigned</th>
                                 <th style="width: 10%">Due Date</th>
+                                <th style="width: 10%">Options</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,11 +31,13 @@
                                 @foreach($workorders as $workorder)
                                     <tr>
                                         <td><a href="{{route('workorder.show', $workorder->id)}}">{{$workorder->title}}</a></td>
-                                        <td>{{str_limit($workorder->description, 120)}}</td>
-                                        <td>{{$workorder->category ? $workorder->category->name : 'Category Not Set'}}</td>
+                                        {{-- <td>{{str_limit($workorder->description, 120)}}</td> --}}
+                                        
                                         <td>{{$workorder->status ? $workorder->status->name : 'Status Not Set'}}</td>
+                                        <td>{{$workorder->category ? $workorder->category->name : 'Not Set'}}</td>
                                         <td>{{$workorder->users ? $workorder->users->name : 'Not Set'}}</td>
                                         <td>{{$workorder->due ? $workorder->due->format('m/d/Y') : 'Not Set'}}</td>
+                                        <td><a class="btn btn-primary"href="{{route('completeworkorder.show', $workorder->id)}}" role="button">Complete</a></td>
                                     </tr>
                                 @endforeach
                             @endif

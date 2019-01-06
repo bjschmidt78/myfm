@@ -21,7 +21,7 @@ class CreateWorkordersTable extends Migration
 
             //Work Order mandatory information
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
 
             //Work Order Admin assigned information
             $table->integer('priority_id')->index()->default(1)->unsigned()->nullable();            
@@ -33,6 +33,8 @@ class CreateWorkordersTable extends Migration
             $table->integer('est_time')->default(0)->unsigned();
             $table->integer('act_time')->default(0)->unsigned();
             $table->timestamp('due')->nullable();
+            $table->timestamp('completed')->nullable();
+
 
             // ->unique()->index()->default(3)->nullable();
         });
@@ -40,6 +42,7 @@ class CreateWorkordersTable extends Migration
         DB::table('workorders')->insert([
             'title' => 'My first workorder',
             'description' => 'More information about my first work order.  This is where a detailed description would go.',
+            'due' => \Carbon\Carbon::now()->addDay(),
 
             "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
             "updated_at" => \Carbon\Carbon::now()  # \Datetime()

@@ -31,13 +31,12 @@
                             </div>
                             <div class="d-flex justify-content-between">                                
                                 <h6 class="card-subtitle mb-2 text-muted">Estimated Time to Complete: {{$workorder->est_time ? $workorder->est_time : 'Not Set'}}</h6>
-                                <h6 class="card-subtitle mb-2 text-muted">Status: {{$workorder->status ? $workorder->status->name : 'Not Set'}}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Priority: {{$workorder->priority ? $workorder->priority->name : 'Not Set'}} - Status: {{$workorder->status ? $workorder->status->name : 'Not Set'}}</h6>
                             </div>
                             <br>
                             <h5 class="card-subtitle mb-2">Description:</h6>
 							<p class="card-text">{{$workorder->description}}</p>
-                            
-                            @if($tasks)
+                            @if(!$tasks->isEmpty())
                                 <table class="table">
                                     <thead>
                                         <tr>

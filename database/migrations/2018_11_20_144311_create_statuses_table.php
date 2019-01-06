@@ -20,7 +20,8 @@ class CreateStatusesTable extends Migration
         });
 
         DB::table('statuses')->insert([
-            ['name' => 'None',                          'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'New',                           'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'Assigned',                      'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
             ['name' => 'Started',                       'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
             ['name' => 'On Hold',                       'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
             ['name' => 'Scheduled',                     'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],

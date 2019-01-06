@@ -6,12 +6,14 @@ use App\User;
 use App\Time;
 use App\Tasks;
 use App\Status;
+use App\Est_time;
 use App\Priority;
 use App\Workorder;
+use Carbon\Carbon;
 use App\Categories;
 use Illuminate\Http\Request;
 
-class WorkOrderListController extends Controller
+class CompleteWorkorderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +23,6 @@ class WorkOrderListController extends Controller
     public function index()
     {
         //
-        return view('workorderlist.index', bsWorkorderNew());
     }
 
     /**
@@ -42,27 +43,7 @@ class WorkOrderListController extends Controller
      */
     public function store(Request $request)
     {
-        $categories = Categories::all();
-        $priorities = Priority::all();
-        $statuses = Status::all();
-        $status = Status::pluck('name', 'id')->all();
-        $users = User::all();
-
-        switch ($request->Date) {
-            case 1: //Due Date Assending
-                $workorders = $this->my_date_sort($request, 'due', 'asc');
-                break;
-            case 2:  //Due Date Decending
-                $workorders = $this->my_date_sort($request, 'due', 'desc');
-                break;
-            case 3:  //Created Date Assending
-                    $workorders = $this->my_date_sort($request, 'created_at', 'asc');
-                break;
-            case 4:  //Created Date Decending
-                    $workorders = $this->my_date_sort($request, 'created_at', 'desc');
-                break;
-        }
-        return view('workorderlist.index', compact('workorders', 'statuses', 'priorities', 'users', 'categories'));
+        //
     }
 
     /**
@@ -73,7 +54,12 @@ class WorkOrderListController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $users = User::all();
+        $status = Status::pluck('name', 'id')->all();
+        $tasks = Tasks::where('workorders_id', $id)->get();
+        $workorder = Workorder::findOrFail($id);
+        return view('completeworkorder.index', compact('workorder', 'users', 'tasks', 'status', 'priority'));
     }
 
     /**
@@ -96,7 +82,14 @@ class WorkOrderListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+                $workorder = Workorder::findOrFail($id);
+        $input = $request->all();
+        $input['completed'] = now();
+        $input['status_id'] = 8;
+        return dd($input);
+        $workorder->update($input);   
+        return redirect('/workorder/');
     }
 
     /**
@@ -109,16 +102,4 @@ class WorkOrderListController extends Controller
     {
         //
     }
-
-    public function my_date_sort($request, $d, $dir)
-    {
-        if(is_null($request->User)){
-            $workorders = Workorder::whereIn('status_id', $request->statuses)->orderBy($d, $dir)->get();
-        } else {
-            $workorders = Workorder::whereIn('status_id', $request->statuses)->whereUsersId($request->User)->orderBy($d, $dir)->get();
-        }
-        return $workorders;
-    }
-
-
 }

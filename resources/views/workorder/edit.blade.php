@@ -78,7 +78,7 @@
                                 {!! Form::close() !!}
                             </div>
                             <h5 class="card-subtitle mb-2">Tasks</h6>
-                            @if($tasks)
+                            @if(!$tasks->isEmpty())
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -100,7 +100,7 @@
                                         @endforeach
                                 </table><!-- / -->
                             @endif
-                            <form method="post" action="{{ route('workorder.store') }}">
+                            <form method="post" action="{{ route('tasks.store') }}">
                                 <div class="form-group">
                                     @csrf
                                     <input type="hidden" class="form-control" name="workorders_id" value='{{$workorder->id}}'/>
@@ -139,7 +139,7 @@
                                             </div>
                                         </div>
                                         <div class="col-2">
-                                            {{-- <div class="input-group mb-3x">
+                                            <div class="input-group mb-3x">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">Actual Time</span>
                                                 </div>
@@ -150,7 +150,7 @@
                                                         @endfor
                                                     @endfor                                       
                                                 </select>
-                                            </div> --}}
+                                            </div>
                                             <button type="submit" class="btn btn-primary col-12">Add</button>
                                         </div>
                                     </div>

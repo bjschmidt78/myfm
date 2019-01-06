@@ -18,7 +18,8 @@ class Workorder extends Model
         'users_id',
         'due',
         'est_time',
-        'act_time'
+        'act_time',
+        'completed'
 
     ];
 

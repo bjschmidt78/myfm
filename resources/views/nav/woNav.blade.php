@@ -29,6 +29,10 @@
         <a class="nav-link" href="{{ asset('/workorder') }}">Workorder Index</a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ asset('/workorderlist') }}">Workorder List</a>
+    </li>
+
 
     <br>
     <h5 class="text-center">Other</h5>
