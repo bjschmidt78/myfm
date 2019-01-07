@@ -27,24 +27,17 @@ Route::get('/user/', function () {
     return view('users/index');
 });
 
-Route::resource('users', 'UsersController');
-
-Route::resource('categories', 'CategoriesController');
-
-Route::resource('statuses', 'StatusController');
-
-Route::resource('tasks', 'TaskController');
-
-// Route::get('workorder/{workorder}/complete', 'WorkorderController@complete')->name('workorder.complete');
-
-Route::resource('completeworkorder', 'CompleteWorkorderController');
-Route::resource('workorder', 'WorkorderController');
-
 Route::resource('workorderlist', 'WorkOrderListController');
-
-
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::middleware(['admin'])->group(function() {
+	Route::resource('users', 'UsersController');
+	Route::resource('completeworkorder', 'CompleteWorkorderController');
+	Route::resource('workorder', 'WorkorderController');
+	Route::resource('categories', 'CategoriesController');
+	Route::resource('statuses', 'StatusController');
+	Route::resource('tasks', 'TaskController');
+});

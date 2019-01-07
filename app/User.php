@@ -41,4 +41,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Tasks');
     }
 
+    public function isAdmin(){
+
+        if($this->role->name == "Administrator"){
+            return true;
+        }
+
+        return false;
+    }
+
 }

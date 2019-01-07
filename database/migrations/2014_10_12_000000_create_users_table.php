@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             'name' => 'Benjamin Schmidt',
             'email' => 'big_ben88@hotmail.com',
             'password' => bcrypt('asdfghjkl'),
+            'role_id' => 1,
 
             
             "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
