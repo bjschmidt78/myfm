@@ -19,7 +19,8 @@ class Workorder extends Model
         'due',
         'est_time',
         'act_time',
-        'completed'
+        'completed',
+        'completed_by'
 
     ];
 
@@ -45,6 +46,9 @@ class Workorder extends Model
         return $this->belongsTo('App\User');
     }
  
+     public function completed_by(){
+        return $this->belongsTo('App\User');
+    }
 
     public function task(){
         return $this->hasMany('App\Tasks');

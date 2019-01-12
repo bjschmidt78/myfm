@@ -83,11 +83,10 @@ class CompleteWorkorderController extends Controller
     public function update(Request $request, $id)
     {
         
-                $workorder = Workorder::findOrFail($id);
+        $workorder = Workorder::findOrFail($id);
         $input = $request->all();
         $input['completed'] = now();
         $input['status_id'] = 8;
-        return dd($input);
         $workorder->update($input);   
         return redirect('/workorder/');
     }

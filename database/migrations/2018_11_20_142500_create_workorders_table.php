@@ -34,18 +34,29 @@ class CreateWorkordersTable extends Migration
             $table->integer('act_time')->default(0)->unsigned();
             $table->timestamp('due')->nullable();
             $table->timestamp('completed')->nullable();
+            $table->integer('completed_by')->unsigned()->nullable();
 
 
             // ->unique()->index()->default(3)->nullable();
         });
 
         DB::table('workorders')->insert([
-            'title' => 'My first workorder',
-            'description' => 'More information about my first work order.  This is where a detailed description would go.',
-            'due' => \Carbon\Carbon::now()->addDay(),
+            [
+                'title' => 'My first workorder',
+                'description' => 'More information about my first work order.  This is where a detailed description would go.',
+                'due' => \Carbon\Carbon::now()->addDay(),
 
-            "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
-            "updated_at" => \Carbon\Carbon::now()  # \Datetime()
+                "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
+                "updated_at" => \Carbon\Carbon::now()  # \Datetime()
+            ],
+            [
+                'title' => 'My second workorder',
+                'description' => 'More information about my second work order.  This is where a detailed description would go.',
+                'due' => \Carbon\Carbon::now()->addDays(3),
+
+                "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
+                "updated_at" => \Carbon\Carbon::now()  # \Datetime()
+            ]
         ]);
     }
 

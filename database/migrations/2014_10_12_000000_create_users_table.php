@@ -27,14 +27,24 @@ class CreateUsersTable extends Migration
         });
 
         DB::table('users')->insert([
-            'name' => 'Benjamin Schmidt',
-            'email' => 'big_ben88@hotmail.com',
-            'password' => bcrypt('asdfghjkl'),
-            'role_id' => 1,
+            [
+                'name' => 'Benjamin Schmidt',
+                'email' => 'big_ben88@hotmail.com',
+                'password' => bcrypt('asdfghjkl'),
+                'role_id' => 1,
 
-            
-            "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
-            "updated_at" => \Carbon\Carbon::now()  # \Datetime() 
+                "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
+                "updated_at" => \Carbon\Carbon::now()  # \Datetime() 
+            ],
+            [
+                'name' => 'Holly Schmidt',
+                'email' => 'hollyschmidt1979@gmail.com',
+                'password' => bcrypt('asdfghjkl'),
+                'role_id' => 3,
+
+                "created_at" =>  \Carbon\Carbon::now(), # \Datetime()
+                "updated_at" => \Carbon\Carbon::now()  # \Datetime() 
+            ]
         ]);
     }
 

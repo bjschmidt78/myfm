@@ -19,18 +19,24 @@
                             <h3 class="card-title">Complete Workorder:</h3>
                             {!! Form::model($workorder, ['method'=>'PATCH', 'action'=>['CompleteWorkorderController@update', $workorder->id], 'files'=>true]) !!}
                                 
-                                <h5 class="card-title">{{'Title: ' . $workorder->title}}</h5>
-                                
-                                <div class="input-group mb-3">
+                                <h5 class="card-title">Title:<br>{{$workorder->title}}</h5>
+                                <h5 class="card-title">Assigned To:<br>{{is_null($workorder->users) ? 'Not Assigned' : $workorder->users->name}}</h5>
+                                <input type="hidden" name="completed_by" value="{{\Auth::user()->id}}">
+         
+{{--                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">User:</span>
                                     </div>
                                     <select name="users_id" id="users_id" class="form-control">
                                         @foreach ($users as $user)
-                                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                                <option value="{{$user->id}}"{{$user->id == $workorder->users->id ? 'selected' : ''}}>{{$user->name}}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
+
+                             {{--    <div class="input-group">
+                                    <h3>User id: {{\Auth::user()->id}} User Name: {{\Auth::user()->name}}</h3>
+                                </div> --}}
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
